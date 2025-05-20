@@ -90,6 +90,18 @@ public class PhoneApp {
  					
  				case 4:
  					System.out.println("<4.검색>");
+ 					System.out.print(">이름: ");
+ 					sc.nextLine();
+ 					String str = sc.nextLine();
+ 					
+ 					for(int i=0; i<pList.size(); i++) {
+ 						if(pList.get(i).getName().contains(str)) {
+ 							System.out.println((i+1) + ".  " + pList.get(i).getName() + "\t" + pList.get(i).getHp() + "\t" + pList.get(i).getCompany());
+ 						}
+ 					}
+ 					
+ 					
+ 					
  					break;
  					
  				case 5:
