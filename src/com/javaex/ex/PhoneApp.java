@@ -1,10 +1,14 @@
 package com.javaex.ex;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -23,6 +27,7 @@ public class PhoneApp {
  		InputStream in = new FileInputStream("C:\\javaStudy\\PhoneDB.txt");
  		InputStreamReader isr = new InputStreamReader(in, "UTF-8");
  		BufferedReader br = new BufferedReader(isr);
+ 		
  		
  		
  		System.out.println("*****************************************");
@@ -70,6 +75,17 @@ public class PhoneApp {
  					Person p = new Person(name, hp, company);
  					pList.add(p);
  					System.out.println("[등록되었습니다.]");
+ 					OutputStream out = new FileOutputStream("C:\\javaStudy\\PhoneDB.txt");
+ 					OutputStreamWriter osw = new OutputStreamWriter(out, "UTF-8");
+ 					BufferedWriter bw = new BufferedWriter(osw);
+ 					
+ 					for(int i=0; i<pList.size(); i++) {
+ 						String personData = pList.get(i).getName() + "," + pList.get(i).getHp() + "," + pList.get(i).getCompany();
+ 						bw.write(personData);
+ 						bw.newLine();
+ 					}
+ 					bw.close();
+ 					
  					break;
  					
  				case 3:
@@ -84,6 +100,16 @@ public class PhoneApp {
  					} else {
  						pList.remove(num-1);
  	 					System.out.println("[삭제되었습니다.]");
+ 	 					OutputStream out1 = new FileOutputStream("C:\\javaStudy\\PhoneDB.txt");
+ 	 					OutputStreamWriter osw1 = new OutputStreamWriter(out1, "UTF-8");
+ 	 					BufferedWriter bw1 = new BufferedWriter(osw1);
+ 	 					
+ 	 					for(int i=0; i<pList.size(); i++) {
+ 	 						String personData = pList.get(i).getName() + "," + pList.get(i).getHp() + "," + pList.get(i).getCompany();
+ 	 						bw1.write(personData);
+ 	 						bw1.newLine();
+ 	 					}
+ 	 					bw1.close();
  					}
  					
  					break;
@@ -100,11 +126,10 @@ public class PhoneApp {
  						}
  					}
  					
- 					
- 					
  					break;
  					
  				case 5:
+ 				
  					System.out.println("*****************************************");
  			 		System.out.println("* \t \t 감사합니다 \t \t*");
  			 		System.out.println("*****************************************");
@@ -131,7 +156,7 @@ public class PhoneApp {
 		
 		
  		
- 	
+ 		
 		br.close();
  		sc.close();
  		
