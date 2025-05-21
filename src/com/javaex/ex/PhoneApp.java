@@ -28,11 +28,24 @@ public class PhoneApp {
  		InputStreamReader isr = new InputStreamReader(in, "UTF-8");
  		BufferedReader br = new BufferedReader(isr);
  		
+ 		while(true) {
+			String str = br.readLine();
+			if(str == null) {
+				break;
+			}
+			String[] pInfo = str.split(",");
+			if(pInfo.length == 3) {
+				Person p = new Person(pInfo[0], pInfo[1], pInfo[2]);
+				pList.add(p);
+			}
+				
+		}
  		
  		
  		System.out.println("*****************************************");
  		System.out.println("* \t 전화번호 관리 프로그램 \t*");
  		System.out.println("*****************************************");
+ 		
  		
  		while(run) {
  			System.out.println("");
@@ -44,18 +57,6 @@ public class PhoneApp {
  			
  				case 1:
  					System.out.println("<1.리스트>");
- 					while(true) {
- 						String str = br.readLine();
- 						if(str == null) {
- 							break;
- 						}
- 						String[] pInfo = str.split(",");
- 						String name = pInfo[0];
- 						String hp = pInfo[1];
- 						String company = pInfo[2];
- 						Person p = new Person(name, hp, company);
- 						pList.add(p);
- 					}
  					
  					for(int i=0; i<pList.size(); i++) {
  						System.out.println((i+1) + ".  " + pList.get(i).getName() + "\t" + pList.get(i).getHp() + "\t" + pList.get(i).getCompany());
@@ -74,7 +75,7 @@ public class PhoneApp {
  					
  					Person p = new Person(name, hp, company);
  					pList.add(p);
- 					System.out.println("[등록되었습니다.]");
+ 					
  					OutputStream out = new FileOutputStream("C:\\javaStudy\\PhoneDB.txt");
  					OutputStreamWriter osw = new OutputStreamWriter(out, "UTF-8");
  					BufferedWriter bw = new BufferedWriter(osw);
@@ -86,6 +87,7 @@ public class PhoneApp {
  					}
  					bw.close();
  					
+ 					System.out.println("[등록되었습니다.]");
  					break;
  					
  				case 3:
@@ -109,7 +111,8 @@ public class PhoneApp {
  	 						bw1.write(personData);
  	 						bw1.newLine();
  	 					}
- 	 					bw1.close();
+ 	 				bw1.close();	
+ 	 				
  					}
  					
  					break;
