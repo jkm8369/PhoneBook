@@ -1,4 +1,4 @@
-package com.javaex.ex;
+package com.javaex.review.ex;
 
 public class Person {
 
@@ -9,7 +9,7 @@ public class Person {
 	public Person() {
 		super();
 	}
-	
+
 	public Person(String name, String hp, String company) {
 		super();
 		this.name = name;
@@ -45,10 +45,11 @@ public class Person {
 	public String toString() {
 		return "Person [name=" + name + ", hp=" + hp + ", company=" + company + "]";
 	}
-
-	public void showInfo() {
-		
-	}
+	
+	
+	
+	
+	
 	
 	
 	
